@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --config ./webpack/webpack.config.dev.js",
     "build": "webpack --config ./webpack/webpack.config.prod.js",
-    "precommit": "lint-staged"
+    "precommit": "NODE_ENV=node lint-staged"
   },
   "lint-staged": {
     "*.{js,jsx}": [
