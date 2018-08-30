@@ -7,6 +7,7 @@ import { AppContainer } from 'react-hot-loader';
 import configureStore from './store';
 import App from './containers/index';
 
+alert(1);
 const store = configureStore();
 const renderApp = (Root) => {
 	render(
