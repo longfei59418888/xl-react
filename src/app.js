@@ -8,7 +8,6 @@ import configureStore from './store';
 import App from './containers/index';
 
 const store = configureStore();
-var dsf = 'sf'
 const renderApp = (Root) => {
 	render(
   <AppContainer>
