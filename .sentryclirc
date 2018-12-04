@@ -1,0 +1,7 @@
+[auth]
+token=1a59c94c14364533b5588b27bd3628c98ff2837c054b4503be089ad623620527
+
+[defaults]
+url=http://localhost:9000
+project=react
+org=sentry

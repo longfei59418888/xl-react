@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add cross-env dev
+  /usr/local/bin/node /usr/local/bin/yarn add @sentry/browser@4.4.1
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/bindings/-/bindings-1.3.0.tgz: ETIMEDOUT
+  Error: https://registry.yarnpkg.com/@sentry/hub/-/hub-4.4.1.tgz: ETIMEDOUT
       at Timeout._onTimeout (/usr/local/lib/node_modules/yarn/lib/cli.js:135339:19)
       at ontimeout (timers.js:498:11)
       at tryOnTimeout (timers.js:323:5)
@@ -29,7 +29,7 @@ npm manifest:
     "scripts": {
       "dev": "webpack-dev-server --config ./webpack/webpack.config.dev.js",
       "build": "webpack --config ./webpack/webpack.config.prod.js",
-      "precommit": "cross-env env=node lint-staged"
+      "precommit": "NODE_ENV=node lint-staged"
     },
     "lint-staged": {
       "*.{js,jsx}": [
@@ -68,7 +68,7 @@ npm manifest:
       "node-sass": "^4.7.2",
       "open-browser-webpack-plugin": "^0.0.5",
       "postcss-loader": "^2.0.9",
-      "react": "^16.2.0",
+      "react": "^16.6.0",
       "react-dom": "^16.2.0",
       "react-hot-loader": "^3.1.3",
       "react-loadable": "^5.3.1",
@@ -90,7 +90,8 @@ npm manifest:
       "core-decorators": "^0.20.0",
       "mobx": "^5.0.3",
       "mobx-react": "^5.2.3",
-      "react-transition-group": "1.2.1"
+      "react-transition-group": "1.2.1",
+      "xl_copy": "^1.0.3"
     }
   }
 
@@ -1546,6 +1547,14 @@ Lockfile:
       strip-ansi "^3.0.1"
       wrap-ansi "^2.0.0"
   
+  cliui@^4.0.0:
+    version "4.1.0"
+    resolved "https://registry.yarnpkg.com/cliui/-/cliui-4.1.0.tgz#348422dbe82d800b3022eef4f6ac10bf2e4d1b49"
+    dependencies:
+      string-width "^2.1.1"
+      strip-ansi "^4.0.0"
+      wrap-ansi "^2.0.0"
+  
   clone-deep@^2.0.1:
     version "2.0.2"
     resolved "https://registry.yarnpkg.com/clone-deep/-/clone-deep-2.0.2.tgz#00db3a1e173656730d1188c3d6aced6d7ea97713"
@@ -1622,7 +1631,7 @@ Lockfile:
     dependencies:
       delayed-stream "~1.0.0"
   
-  commander@2.17.x, commander@^2.14.1, commander@^2.9.0, commander@~2.17.1:
+  commander@2.17.x, commander@^2.14.1, commander@^2.17.1, commander@^2.9.0, commander@~2.17.1:
     version "2.17.1"
     resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
   
@@ -1948,6 +1957,12 @@ Lockfile:
   decamelize@^1.0.0, decamelize@^1.1.1, decamelize@^1.1.2:
     version "1.2.0"
     resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
+  
+  decamelize@^2.0.0:
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-2.0.0.tgz#656d7bbc8094c4c788ea53c5840908c9c7d063c7"
+    dependencies:
+      xregexp "4.0.0"
   
   decode-uri-component@^0.2.0:
     version "0.2.0"
@@ -2602,6 +2617,12 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/find-up/-/find-up-2.1.0.tgz#45d1b7e506c717ddd482775a2b77920a3c0c57a7"
     dependencies:
       locate-path "^2.0.0"
+  
+  find-up@^3.0.0:
+    version "3.0.0"
+    resolved "https://registry.yarnpkg.com/find-up/-/find-up-3.0.0.tgz#49169f1d7993430646da61ecc5ae355c21c97b73"
+    dependencies:
+      locate-path "^3.0.0"
   
   flatten@^1.0.2:
     version "1.0.2"
@@ -3702,6 +3723,13 @@ Lockfile:
       p-locate "^2.0.0"
       path-exists "^3.0.0"
   
+  locate-path@^3.0.0:
+    version "3.0.0"
+    resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-3.0.0.tgz#dbec3b3ab759758071b58fe59fc41871af21400e"
+    dependencies:
+      p-locate "^3.0.0"
+      path-exists "^3.0.0"
+  
   lodash-es@^4.17.5, lodash-es@^4.2.1:
     version "4.17.10"
     resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.10.tgz#62cd7104cdf5dd87f235a837f0ede0e8e5117e05"
@@ -4432,11 +4460,23 @@ Lockfile:
     dependencies:
       p-try "^1.0.0"
   
+  p-limit@^2.0.0:
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-2.0.0.tgz#e624ed54ee8c460a778b3c9f3670496ff8a57aec"
+    dependencies:
+      p-try "^2.0.0"
+  
   p-locate@^2.0.0:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/p-locate/-/p-locate-2.0.0.tgz#20a0103b222a70c8fd39cc2e580680f3dde5ec43"
     dependencies:
       p-limit "^1.1.0"
+  
+  p-locate@^3.0.0:
+    version "3.0.0"
+    resolved "https://registry.yarnpkg.com/p-locate/-/p-locate-3.0.0.tgz#322d69a05c0264b25997d9f40cd8a891ab0064a4"
+    dependencies:
+      p-limit "^2.0.0"
   
   p-map@^1.1.1:
     version "1.2.0"
@@ -4445,6 +4485,10 @@ Lockfile:
   p-try@^1.0.0:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/p-try/-/p-try-1.0.0.tgz#cbc79cdbaf8fd4228e13f621f2b1a237c1b207b3"
+  
+  p-try@^2.0.0:
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.0.0.tgz#85080bb87c64688fa47996fe8f7dfbe8211760b1"
   
   pako@~1.0.5:
     version "1.0.6"
@@ -4525,6 +4569,10 @@ Lockfile:
   path-key@^2.0.0, path-key@^2.0.1:
     version "2.0.1"
     resolved "https://registry.yarnpkg.com/path-key/-/path-key-2.0.1.tgz#411cadb574c5a140d3a4b1910d40d80cc9f40b40"
+  
+  path-parse@^1.0.5:
+    version "1.0.6"
+    resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
   
   path-to-regexp@0.1.7:
     version "0.1.7"
@@ -4911,7 +4959,7 @@ Lockfile:
     dependencies:
       asap "~2.0.3"
   
-  prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.6.0, prop-types@^15.6.1:
+  prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
     version "15.6.2"
     resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
     dependencies:
@@ -5135,14 +5183,14 @@ Lockfile:
       object-assign "^4.1.0"
       prop-types "^15.5.10"
   
-  react@^16.2.0:
-    version "16.4.2"
-    resolved "https://registry.yarnpkg.com/react/-/react-16.4.2.tgz#2cd90154e3a9d9dd8da2991149fdca3c260e129f"
+  react@^16.6.0:
+    version "16.6.0"
+    resolved "https://registry.yarnpkg.com/react/-/react-16.6.0.tgz#b34761cfaf3e30f5508bc732fb4736730b7da246"
     dependencies:
-      fbjs "^0.8.16"
       loose-envify "^1.1.0"
       object-assign "^4.1.1"
-      prop-types "^15.6.0"
+      prop-types "^15.6.2"
+      scheduler "^0.10.0"
   
   read-pkg-up@^1.0.1:
     version "1.0.1"
@@ -5203,6 +5251,12 @@ Lockfile:
       minimatch "^3.0.2"
       readable-stream "^2.0.2"
       set-immediate-shim "^1.0.1"
+  
+  rechoir@^0.6.2:
+    version "0.6.2"
+    resolved "https://registry.yarnpkg.com/rechoir/-/rechoir-0.6.2.tgz#85204b54dba82d5742e28c96756ef43af50e3384"
+    dependencies:
+      resolve "^1.1.6"
   
   redbox-react@^1.3.6:
     version "1.6.0"
@@ -5434,6 +5488,12 @@ Lockfile:
     version "0.2.1"
     resolved "https://registry.yarnpkg.com/resolve-url/-/resolve-url-0.2.1.tgz#2c637fe77c893afd2a663fe21aa9080068e2052a"
   
+  resolve@^1.1.6:
+    version "1.8.1"
+    resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.8.1.tgz#82f1ec19a423ac1fbd080b0bab06ba36e84a7a26"
+    dependencies:
+      path-parse "^1.0.5"
+  
   restore-cursor@^1.0.1:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/restore-cursor/-/restore-cursor-1.0.1.tgz#34661f46886327fed2991479152252df92daa541"
@@ -5510,6 +5570,13 @@ Lockfile:
   sax@^1.2.4, sax@~1.2.1:
     version "1.2.4"
     resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
+  
+  scheduler@^0.10.0:
+    version "0.10.0"
+    resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.10.0.tgz#7988de90fe7edccc774ea175a783e69c40c521e1"
+    dependencies:
+      loose-envify "^1.1.0"
+      object-assign "^4.1.1"
   
   schema-utils@^0.3.0:
     version "0.3.0"
@@ -5654,6 +5721,14 @@ Lockfile:
   shebang-regex@^1.0.0:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
+  
+  shelljs@^0.8.2:
+    version "0.8.2"
+    resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.8.2.tgz#345b7df7763f4c2340d584abb532c5f752ca9e35"
+    dependencies:
+      glob "^7.0.0"
+      interpret "^1.0.0"
+      rechoir "^0.6.2"
   
   signal-exit@^3.0.0:
     version "3.0.2"
@@ -5898,7 +5973,7 @@ Lockfile:
       is-fullwidth-code-point "^1.0.0"
       strip-ansi "^3.0.0"
   
-  "string-width@^1.0.2 || 2", string-width@^2.0.0:
+  "string-width@^1.0.2 || 2", string-width@^2.0.0, string-width@^2.1.1:
     version "2.1.1"
     resolved "https://registry.yarnpkg.com/string-width/-/string-width-2.1.1.tgz#ab93f27a8dc13d28cac815c462143a6d9012ae9e"
     dependencies:
@@ -6471,6 +6546,19 @@ Lockfile:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   
+  xl_copy@^1.0.3:
+    version "1.0.3"
+    resolved "https://registry.yarnpkg.com/xl_copy/-/xl_copy-1.0.3.tgz#23ec708bc513e5f454c107d046083e779cac129f"
+    dependencies:
+      chalk "^2.4.1"
+      commander "^2.17.1"
+      shelljs "^0.8.2"
+      yargs "^12.0.1"
+  
+  xregexp@4.0.0:
+    version "4.0.0"
+    resolved "https://registry.yarnpkg.com/xregexp/-/xregexp-4.0.0.tgz#e698189de49dd2a18cc5687b05e17c8e43943020"
+  
   xtend@^4.0.0:
     version "4.0.1"
     resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
@@ -6479,6 +6567,10 @@ Lockfile:
     version "3.2.1"
     resolved "https://registry.yarnpkg.com/y18n/-/y18n-3.2.1.tgz#6d15fba884c08679c0d77e88e7759e811e07fa41"
   
+  "y18n@^3.2.1 || ^4.0.0":
+    version "4.0.0"
+    resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.0.tgz#95ef94f85ecc81d007c264e190a120f0a3c8566b"
+  
   yallist@^2.1.2:
     version "2.1.2"
     resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
@@ -6486,6 +6578,12 @@ Lockfile:
   yallist@^3.0.0, yallist@^3.0.2:
     version "3.0.2"
     resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.2.tgz#8452b4bb7e83c7c188d8041c1a837c773d6d8bb9"
+  
+  yargs-parser@^10.1.0:
+    version "10.1.0"
+    resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-10.1.0.tgz#7202265b89f7e9e9f2e5765e0fe735a905edbaa8"
+    dependencies:
+      camelcase "^4.1.0"
   
   yargs-parser@^4.2.0:
     version "4.2.1"
@@ -6522,6 +6620,23 @@ Lockfile:
       which-module "^1.0.0"
       y18n "^3.2.1"
       yargs-parser "^4.2.0"
+  
+  yargs@^12.0.1:
+    version "12.0.1"
+    resolved "https://registry.yarnpkg.com/yargs/-/yargs-12.0.1.tgz#6432e56123bb4e7c3562115401e98374060261c2"
+    dependencies:
+      cliui "^4.0.0"
+      decamelize "^2.0.0"
+      find-up "^3.0.0"
+      get-caller-file "^1.0.1"
+      os-locale "^2.0.0"
+      require-directory "^2.1.1"
+      require-main-filename "^1.0.1"
+      set-blocking "^2.0.0"
+      string-width "^2.0.0"
+      which-module "^2.0.0"
+      y18n "^3.2.1 || ^4.0.0"
+      yargs-parser "^10.1.0"
   
   yargs@^7.0.0:
     version "7.1.0"

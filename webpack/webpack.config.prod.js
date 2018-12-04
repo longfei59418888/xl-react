@@ -1,25 +1,56 @@
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const merge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
-const webpackConfigBase = require('./webpack.config.base.js');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 
 const prodConfig = {
     entry: {
         app: './src/app.js',
     },
+    devtool: 'source-map',
     output: {
-        publicPath: '/almond/static/',
+        publicPath: '/',
         filename: 'js/[name][chunkhash:8].js',
         chunkFilename: 'js/[name][chunkhash:8].js',
         path: path.resolve(__dirname, '../dist'),
+        // sourceMapFilename: 'js/[name][chunkhash:8].js.map',
+    },
+    resolve: {
+      extensions: [
+        '.js', '.jsx', '.scss',
+      ],
+      modules: [
+        path.resolve(''), // 模块默认位置
+        'node_modules',
+      ],
     },
     module: {
         rules: [
+          {
+            test: /\.(js|jsx)$/,
+            use: [
+              'babel-loader',
+            ],
+            exclude: [/(node_modules)/],
+          }, {
+            test: /\.(jpg|jpeg|gif|png)$/,
+            use: [
+              {
+                loader: 'url-loader',
+                options: {
+                  limit: 10,
+                  name: 'images/[name].[hash:8].[ext]',
+                },
+              },
+            ],
+          }, {
+            test: /\.(eot|ttf|woff|woff2|svg)$/,
+            use: 'file-loader?name=fonts/[name].[hash:8].[ext]',
+          },
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
@@ -92,15 +123,15 @@ const prodConfig = {
             },
         ],
     },
-    // output: {
-    //   path: path.join(__dirname, './dist'),
-    //   chunkFilename: '[name].js'
-    // },
     plugins: [ // 定义环境变量为开发环境
+      new CleanWebpackPlugin(['dist'], {
+        root: path.resolve(__dirname, '../'),
+      }),
         new ExtractTextPlugin('css/[name].css'),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
             IS_DEVELOPMETN: false,
+            RELEASE_VERSION: JSON.stringify(process.env.envTag),
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
@@ -113,4 +144,4 @@ const prodConfig = {
     ],
 };
 
-module.exports = merge(webpackConfigBase, prodConfig);
+module.exports = prodConfig;
