@@ -1,4 +1,3 @@
-
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 const path = require('path');
@@ -6,19 +5,20 @@ const webpackConfigBase = require('./webpack.config.base.js');
 const config = require('./config');
 
 const devConfig = {
-  entry: {
-    app: [
-      'babel-polyfill',
-      'react-hot-loader/patch', `webpack-dev-server/client?http://${config.DEV_IP}:${config.DEV_PORT}`,
-      'webpack/hot/only-dev-server',
-      './src/app.js',
-    ],
-  },
-  output: {
-    filename: '[name].js',
-    publicPath: '/',
-    path: path.resolve(__dirname, 'dist'),
-  },
+    entry: {
+        app: [
+            'babel-polyfill',
+            'react-hot-loader/patch',
+            `webpack-dev-server/client?http://${config.DEV_IP}:${config.DEV_PORT}`,
+            'webpack/hot/only-dev-server',
+            './src/app.js',
+        ],
+    },
+    output: {
+        filename: '[name].js',
+        publicPath: '/',
+        path: path.resolve(__dirname, 'dist'),
+    },
     module: {
         rules: [
             {
@@ -108,4 +108,5 @@ const devConfig = {
             }),
     ],
 };
-module.exports = merge(webpackConfigBase, devConfig);
+const configs = merge(webpackConfigBase, devConfig);
+module.exports = configs;

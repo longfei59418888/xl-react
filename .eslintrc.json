@@ -23,6 +23,8 @@
         "require": true,
         "EXIF": true,
         "DEVELOPMETN_URL": true,  // 全局变量
+        "RELEASE_VERSION": true,  // 全局变量
+        "require": true,  // 全局变量
         "formatBankCard": true,  // 兼容方法 extend.formatBankCard
         "React": true
     },

@@ -1,16 +1,15 @@
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const config = require('./config');
 
 module.exports = {
     entry: {
-        app: [
-            'babel-polyfill',
-            'react-hot-loader/patch', `webpack-dev-server/client?http://${config.DEV_IP}:${config.DEV_PORT}`,
-            'webpack/hot/only-dev-server',
-            './src/app.js',
-        ],
+        // app: [
+        //     'babel-polyfill',
+        //     'react-hot-loader/patch', `webpack-dev-server/client?http://${config.DEV_IP}:${config.DEV_PORT}`,
+        //     'webpack/hot/only-dev-server',
+        //     './src/app.js',
+        // ],
     },
     output: {
         filename: '[name].js',

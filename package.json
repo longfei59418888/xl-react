@@ -43,7 +43,6 @@
     "isomorphic-fetch": "^2.2.1",
     "lazy-route": "^1.0.7",
     "lint-staged": "^7.2.2",
-    "node-sass": "^4.7.2",
     "open-browser-webpack-plugin": "^0.0.5",
     "postcss-loader": "^2.0.9",
     "react": "^16.6.0",

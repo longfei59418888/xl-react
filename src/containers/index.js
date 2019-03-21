@@ -6,10 +6,10 @@ import Index from './home';
 
 require('./index.scss');
 
-Sentry.init({
-  dsn: 'http://18ac34902da74aa29a4328879a58fb0d@localhost:9000/2',
-  release: RELEASE_VERSION,
-});
+// Sentry.init({
+//   dsn: 'http://18ac34902da74aa29a4328879a58fb0d@localhost:9000/2',
+//   release: RELEASE_VERSION,
+// });
 class Home extends React.Component {
   componentDidCatch(error, errorInfo) {
     Sentry.withScope((scope) => {
