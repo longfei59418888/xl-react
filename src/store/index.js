@@ -21,7 +21,6 @@ const configureStore = (initialState = {}) => {
 
   if (ENV !== 'production' && module.hot.active) {
     module.hot.accept('../reducers', () => {
-      console.log('nextReducers', nextReducers);
       store.replaceReducer(nextReducers);
     });
   }
